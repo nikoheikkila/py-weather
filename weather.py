@@ -8,7 +8,6 @@ import requests
 from argparse import ArgumentParser
 
 DEFAULT_LOCALE = "en"
-SERVICE = "http://wttr.in/{}"
 
 
 def get_args():
@@ -43,8 +42,10 @@ def main():
         "q": ""
     }
 
+    url = f'http://wttr.in/{args.location}'
+
     response = requests.get(
-        SERVICE.format(args.location),
+        url,
         headers=headers,
         params=params
     )
