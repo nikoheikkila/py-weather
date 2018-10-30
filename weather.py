@@ -13,12 +13,12 @@ DEFAULT_LOCALE = "en"
 def get_args():
     args = ArgumentParser(__doc__)
     args.add_argument(
-        'location',
+        "location",
         type=str,
         nargs="*",
         metavar="LOCATION",
         default="Helsinki",
-        help="Where to look weather from"
+        help="Where to look weather from",
     )
 
     return args.parse_args()
@@ -33,25 +33,20 @@ def parse_locale() -> str:
 
 def main():
     args = get_args()
-    headers = {
-        "Accept-Language": parse_locale()
-    }
-    params = {
-        "0": "",
-        "n": "",
-        "q": ""
-    }
+    headers = {"Accept-Language": parse_locale()}
+    params = {"0": "", "n": "", "q": ""}
 
-    url = f'http://wttr.in/{args.location}'
+    url = f"http://wttr.in/{args.location}"
 
-    response = requests.get(
-        url,
-        headers=headers,
-        params=params
-    )
+    try:
+        response = requests.get(url, headers=headers, params=params)
+    except requests.exceptions.Timeout:
+        print("Request to wttr.in API timed out.")
+        return 1
 
     print(response.text)
+    return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

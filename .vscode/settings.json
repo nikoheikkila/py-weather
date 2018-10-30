@@ -1,7 +1,0 @@
-{
-    "python.pythonPath": "/Users/nikoheikkila/.virtualenvs/weather-4TxfLoyP/bin/python3",
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true
-}

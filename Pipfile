@@ -7,15 +7,19 @@ name = "pypi"
 
 [packages]
 
-requests = "*"
+requests = ">=2.20.0"
 pyinstaller = "*"
 
 
 [dev-packages]
 
-yapf = "*"
-flake8 = "*"
+black = "*"
+pylama = "*"
 
 [requires]
 
-python_version = "3.6"
+python_version = "3.7"
+
+[pipenv]
+
+allow_prereleases = true
